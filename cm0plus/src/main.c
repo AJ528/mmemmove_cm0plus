@@ -8,13 +8,17 @@
 #include "stm32wlxx_ll_gpio.h"
 #include "stm32wlxx_ll_lpuart.h"
 #include "stm32wlxx_ll_utils.h"
-#include "stm32wlxx.h"
+// #include "stm32wlxx.h"
 
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
 #include <stddef.h>
 #include <stdio.h>
+
+#define CPU2_INITIALISED 0xAA
+#define CPU2_NOT_INITIALISED 0xBE
+volatile uint8_t *cpu2InitDone = (uint8_t *)0x2000FFFF;
 
 static void UART_init(void);
 static void sysclk_init(void);
@@ -114,44 +118,47 @@ TEST memmove_slide_dest(uint32_t data_len, uint32_t src_offset)
 }
 
 // Add definitions that need to be in the test runner's main file.
-GREATEST_MAIN_DEFS();
+// GREATEST_MAIN_DEFS();
 
 int main(void)
 {
-  sysclk_init();
+  *cpu2InitDone = CPU2_INITIALISED;
+  // sysclk_init();
   UART_init();
 
-  printfln_("%-6s %-10s %-10s %-8s %-6s %-8s %-6s", "d_len", "src_off", "dest_off", "o_cycle", "o_LSU", "n_cycle", "n_LSU");
+  println_("CPU2 LIVES!");
 
-  GREATEST_MAIN_BEGIN();  // command-line options, initialization.
+  // printfln_("%-6s %-10s %-10s %-8s %-6s %-8s %-6s", "d_len", "src_off", "dest_off", "o_cycle", "o_LSU", "n_cycle", "n_LSU");
 
-  RUN_TESTp(memmove_test, 1, 0x81, 0x7E, true);
-  RUN_TESTp(memmove_test, 10, 0x81, 0x7E, true);
-  RUN_TESTp(memmove_test, 20, 0x81, 0x7E, true);
-  RUN_TESTp(memmove_test, 50, 0x81, 0x7E, true);
+  // GREATEST_MAIN_BEGIN();  // command-line options, initialization.
 
-  RUN_TESTp(memmove_test, 1, 0x81, 0x82, true);
-  RUN_TESTp(memmove_test, 10, 0x81, 0x82, true);
-  RUN_TESTp(memmove_test, 20, 0x81, 0x82, true);
-  RUN_TESTp(memmove_test, 50, 0x81, 0x82, true);
+  // RUN_TESTp(memmove_test, 1, 0x81, 0x7E, true);
+  // RUN_TESTp(memmove_test, 10, 0x81, 0x7E, true);
+  // RUN_TESTp(memmove_test, 20, 0x81, 0x7E, true);
+  // RUN_TESTp(memmove_test, 50, 0x81, 0x7E, true);
 
-  RUN_TESTp(memmove_test, 1, 0x81, 0x102, true);
-  RUN_TESTp(memmove_test, 10, 0x81, 0x102, true);
-  RUN_TESTp(memmove_test, 20, 0x81, 0x102, true);
-  RUN_TESTp(memmove_test, 50, 0x81, 0x102, true);
+  // RUN_TESTp(memmove_test, 1, 0x81, 0x82, true);
+  // RUN_TESTp(memmove_test, 10, 0x81, 0x82, true);
+  // RUN_TESTp(memmove_test, 20, 0x81, 0x82, true);
+  // RUN_TESTp(memmove_test, 50, 0x81, 0x82, true);
 
-  RUN_TESTp(memmove_slide_dest, 0x0f, 0x81);
-  RUN_TESTp(memmove_slide_dest, 0x10, 0x80);
-  RUN_TESTp(memmove_slide_dest, 0x22, 0x17f);
-  RUN_TESTp(memmove_slide_dest, 0x200, 0x400);
+  // RUN_TESTp(memmove_test, 1, 0x81, 0x102, true);
+  // RUN_TESTp(memmove_test, 10, 0x81, 0x102, true);
+  // RUN_TESTp(memmove_test, 20, 0x81, 0x102, true);
+  // RUN_TESTp(memmove_test, 50, 0x81, 0x102, true);
 
-  RUN_TEST1(memmove_iterate, 24);
+  // RUN_TESTp(memmove_slide_dest, 0x0f, 0x81);
+  // RUN_TESTp(memmove_slide_dest, 0x10, 0x80);
+  // RUN_TESTp(memmove_slide_dest, 0x22, 0x17f);
+  // RUN_TESTp(memmove_slide_dest, 0x200, 0x400);
 
-  GREATEST_MAIN_END();    // display results
+  // RUN_TEST1(memmove_iterate, 24);
+
+  // GREATEST_MAIN_END();    // display results
 
   while (1)
   {
-  	// LL_mDelay(1000);
+  	LL_mDelay(1000);
   }
 }
 
