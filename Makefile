@@ -25,8 +25,6 @@ clean: $(CLEANSUBDIRS)
 # this recipe uses a static pattern that only applies to the list of targets in CLEANSUBDIRS
 $(CLEANSUBDIRS): clean-%:
 	$(MAKE) -C $* clean
-	
-
 
 # debug: $(TARGET_ELF)
 # 	./debug.sh
