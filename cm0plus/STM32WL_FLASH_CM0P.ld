@@ -7,7 +7,7 @@
 ENTRY(Reset_Handler)
 
 /* Highest address of the user mode stack */
-_estack = ORIGIN(RAM) + LENGTH(RAM); /* end of RAM */
+_estack = ORIGIN(RAM1) + LENGTH(RAM1); /* end of RAM */
 
 _Min_Heap_Size = 0x00; /* required amount of heap  */
 _Min_Stack_Size = 0x1000; /* required amount of stack */
@@ -18,7 +18,8 @@ _Min_Stack_Size = 0x1000; /* required amount of stack */
    and ram so each core gets an exclusive slice of ram and flash. */
 MEMORY
 {
-  RAM    (xrw)   : ORIGIN = 0x20008000, LENGTH = 0x00008000
+  RAM1   (xrw)   : ORIGIN = 0x20008000, LENGTH = 0x00004000
+  RAM2   (xrw)   : ORIGIN = 0x2000C000, LENGTH = 0x00004000
   FLASH   (rx)   : ORIGIN = 0x08020000, LENGTH = 0x00020000
 }
 
@@ -106,7 +107,7 @@ SECTIONS
  exist in RAM until the MCU is powered up. After power-up, but before calling
  main(), the objects are copied from FLASH to their correct location in RAM.
 */
-  } > RAM AT > FLASH
+  } > RAM1 AT > FLASH
 
   /* Uninitialized data section into "RAM" type memory */
 /* 
@@ -124,7 +125,7 @@ SECTIONS
     *(.bss*)
     . = ALIGN(4);
     _ebss = .;         /* define a global symbol at bss end */
-  } > RAM
+  } > RAM1
 
   /* stack section, used to check that there is enough RAM left */
   .stack :
@@ -133,7 +134,7 @@ SECTIONS
     . = . + _Min_Heap_Size;
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
-  } > RAM
+  } > RAM1
 
 /* 
   contains metadata about the compiled object. 
