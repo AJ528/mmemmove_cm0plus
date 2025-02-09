@@ -26,8 +26,8 @@ clean: $(CLEANSUBDIRS)
 $(CLEANSUBDIRS): clean-%:
 	$(MAKE) -C $* clean
 
-# debug: $(TARGET_ELF)
-# 	./debug.sh
+debug: all
+	./debug.sh
 
 # recipe to print usage information
 help:
