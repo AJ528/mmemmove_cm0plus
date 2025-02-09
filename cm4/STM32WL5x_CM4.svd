@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright (c) 2020 STMicroelectronics.
+Copyright (c) 2024 STMicroelectronics.
 
  SPDX-License-Identifier: Apache-2.0
 
@@ -18,14 +18,14 @@ Copyright (c) 2020 STMicroelectronics.
 -->
 <device xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.1" xsi:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
   <name>STM32WL5x_CM4</name>
-  <version>1.9</version>
+  <version>2.2</version>
   <description>STM32WL5x_CM4</description>
   <cpu>
     <name>CM4</name>
     <revision>r0p1</revision>
     <endian>little</endian>
     <mpuPresent>true</mpuPresent>
-    <fpuPresent>true</fpuPresent>
+    <fpuPresent>false</fpuPresent>
     <nvicPrioBits>4</nvicPrioBits>
     <vendorSystickConfig>false</vendorSystickConfig>
   </cpu>
@@ -5003,766 +5003,1564 @@ Copyright (c) 2020 STMicroelectronics.
       </interrupt>
       <registers>
         <register>
-          <name>RTSR1</name>
-          <displayName>RTSR1</displayName>
-          <description>rising trigger selection           register</description>
-          <addressOffset>0x0</addressOffset>
+          <name>EXTI_RTSR1</name>
+          <displayName>EXTI_RTSR1</displayName>
+          <description>EXTI rising trigger selection register</description>
+          <addressOffset>0x000</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
-              <name>RT</name>
-              <description>Rising trigger event configuration bit               of Configurable Event input</description>
+              <name>RT0</name>
+              <description>rising trigger event configuration bit of configurable event input 0</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>17</bitWidth>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT1</name>
+              <description>rising trigger event configuration bit of configurable event input 1</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT2</name>
+              <description>rising trigger event configuration bit of configurable event input 2</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT3</name>
+              <description>rising trigger event configuration bit of configurable event input 3</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT4</name>
+              <description>rising trigger event configuration bit of configurable event input 4</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT5</name>
+              <description>rising trigger event configuration bit of configurable event input 5</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT6</name>
+              <description>rising trigger event configuration bit of configurable event input 6</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT7</name>
+              <description>rising trigger event configuration bit of configurable event input 7</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT8</name>
+              <description>rising trigger event configuration bit of configurable event input 8</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT9</name>
+              <description>rising trigger event configuration bit of configurable event input 9</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT10</name>
+              <description>rising trigger event configuration bit of configurable event input 10</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT11</name>
+              <description>rising trigger event configuration bit of configurable event input 11</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT12</name>
+              <description>rising trigger event configuration bit of configurable event input 12</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT13</name>
+              <description>rising trigger event configuration bit of configurable event input 13</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT14</name>
+              <description>rising trigger event configuration bit of configurable event input 14</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT15</name>
+              <description>rising trigger event configuration bit of configurable event input 15</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT16</name>
+              <description>rising trigger event configuration bit of configurable event input 16</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>RT21</name>
-              <description>Rising trigger event configuration bit               of Configurable Event input</description>
+              <description>rising trigger event configuration bit of configurable event input 21</description>
               <bitOffset>21</bitOffset>
-              <bitWidth>2</bitWidth>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RT22</name>
+              <description>rising trigger event configuration bit of configurable event input 22
+Note: The configurable event inputs are edge triggered. No glitch must be generated on these inputs. If a rising edge on the configurable event input occurs while writing to the register, the associated pending bit is not set.
+Note: Rising and falling edge triggers can be set for the same configurable event input. In this case, both edges generate a trigger.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Rising trigger disabled (for event and interrupt) for input line</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Rising trigger enabled (for event and interrupt) for input line</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>FTSR1</name>
-          <displayName>FTSR1</displayName>
-          <description>falling trigger selection           register</description>
-          <addressOffset>0x4</addressOffset>
+          <name>EXTI_FTSR1</name>
+          <displayName>EXTI_FTSR1</displayName>
+          <description>EXTI falling trigger selection register</description>
+          <addressOffset>0x004</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
-              <name>FT</name>
-              <description>Falling trigger event configuration bit               of Configurable Event input</description>
+              <name>FT0</name>
+              <description>falling trigger event configuration bit of configurable event input 0</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>17</bitWidth>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT1</name>
+              <description>falling trigger event configuration bit of configurable event input 1</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT2</name>
+              <description>falling trigger event configuration bit of configurable event input 2</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT3</name>
+              <description>falling trigger event configuration bit of configurable event input 3</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT4</name>
+              <description>falling trigger event configuration bit of configurable event input 4</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT5</name>
+              <description>falling trigger event configuration bit of configurable event input 5</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT6</name>
+              <description>falling trigger event configuration bit of configurable event input 6</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT7</name>
+              <description>falling trigger event configuration bit of configurable event input 7</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT8</name>
+              <description>falling trigger event configuration bit of configurable event input 8</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT9</name>
+              <description>falling trigger event configuration bit of configurable event input 9</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT10</name>
+              <description>falling trigger event configuration bit of configurable event input 10</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT11</name>
+              <description>falling trigger event configuration bit of configurable event input 11</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT12</name>
+              <description>falling trigger event configuration bit of configurable event input 12</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT13</name>
+              <description>falling trigger event configuration bit of configurable event input 13</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT14</name>
+              <description>falling trigger event configuration bit of configurable event input 14</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT15</name>
+              <description>falling trigger event configuration bit of configurable event input 15</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT16</name>
+              <description>falling trigger event configuration bit of configurable event input 16</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>FT21</name>
-              <description>Falling trigger event configuration bit               of Configurable Event input</description>
+              <description>falling trigger event configuration bit of configurable event input 21</description>
               <bitOffset>21</bitOffset>
-              <bitWidth>2</bitWidth>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FT22</name>
+              <description>falling trigger event configuration bit of configurable event input 22
+Note: The configurable event inputs are edge triggered. No glitch must be generated on these inputs. If a falling edge on the configurable event input occurs while writing to the register, the associated pending bit is not set.
+Note: Rising and falling edge triggers can be set for the same configurable event input. In this case, both edges generate a trigger.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>falling trigger disabled (for event and interrupt) for input line</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>falling trigger enabled (for event and interrupt) for input line</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>SWIER1</name>
-          <displayName>SWIER1</displayName>
-          <description>software interrupt event           register</description>
-          <addressOffset>0x8</addressOffset>
+          <name>EXTI_SWIER1</name>
+          <displayName>EXTI_SWIER1</displayName>
+          <description>EXTI software interrupt event register</description>
+          <addressOffset>0x008</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
-              <name>SWI</name>
-              <description>Software interrupt on               event</description>
+              <name>SWI0</name>
+              <description>Software interrupt on line 0</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>17</bitWidth>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI1</name>
+              <description>Software interrupt on line 1</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI2</name>
+              <description>Software interrupt on line 2</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI3</name>
+              <description>Software interrupt on line 3</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI4</name>
+              <description>Software interrupt on line 4</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI5</name>
+              <description>Software interrupt on line 5</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI6</name>
+              <description>Software interrupt on line 6</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI7</name>
+              <description>Software interrupt on line 7</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI8</name>
+              <description>Software interrupt on line 8</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI9</name>
+              <description>Software interrupt on line 9</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI10</name>
+              <description>Software interrupt on line 10</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI11</name>
+              <description>Software interrupt on line 11</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI12</name>
+              <description>Software interrupt on line 12</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI13</name>
+              <description>Software interrupt on line 13</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI14</name>
+              <description>Software interrupt on line 14</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI15</name>
+              <description>Software interrupt on line 15</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI16</name>
+              <description>Software interrupt on line 16</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>SWI21</name>
-              <description>Software interrupt on               event</description>
+              <description>Software interrupt on line 21</description>
               <bitOffset>21</bitOffset>
-              <bitWidth>2</bitWidth>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SWI22</name>
+              <description>Software interrupt on line 22
+A software interrupt is generated independently from the setting in EXTI_RTSR and EXTI_FTSR. This bit always returns 0 when read.
+This bit is automatically cleared by hardware.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Writing 0 has no effect.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Writing 1 to this bit triggers an event on line 22.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>PR1</name>
-          <displayName>PR1</displayName>
+          <name>EXTI_PR1</name>
+          <displayName>EXTI_PR1</displayName>
           <description>EXTI pending register</description>
-          <addressOffset>0xC</addressOffset>
+          <addressOffset>0x00C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
-              <name>PIF</name>
-              <description>Configurable event inputs Pending               bit</description>
+              <name>PIF0</name>
+              <description>pending bit on event input 0</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>17</bitWidth>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF1</name>
+              <description>pending bit on event input 1</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF2</name>
+              <description>pending bit on event input 2</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF3</name>
+              <description>pending bit on event input 3</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF4</name>
+              <description>pending bit on event input 4</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF5</name>
+              <description>pending bit on event input 5</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF6</name>
+              <description>pending bit on event input 6</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF7</name>
+              <description>pending bit on event input 7</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF8</name>
+              <description>pending bit on event input 8</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF9</name>
+              <description>pending bit on event input 9</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF10</name>
+              <description>pending bit on event input 10</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF11</name>
+              <description>pending bit on event input 11</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF12</name>
+              <description>pending bit on event input 12</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF13</name>
+              <description>pending bit on event input 13</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF14</name>
+              <description>pending bit on event input 14</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF15</name>
+              <description>pending bit on event input 15</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF16</name>
+              <description>pending bit on event input 16</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>PIF21</name>
-              <description>Configurable event inputs Pending               bit</description>
+              <description>pending bit on event input 21</description>
               <bitOffset>21</bitOffset>
-              <bitWidth>2</bitWidth>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>PIF22</name>
+              <description>pending bit on event input 22
+These bits are set when the selected edge event or an EXTI_SWIER software trigger arrives on the configurable event line. This bit is cleared by writing 1 to it.</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>No trigger request occurred.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Trigger request occurred.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>RTSR2</name>
-          <displayName>RTSR2</displayName>
-          <description>rising trigger selection           register</description>
-          <addressOffset>0x20</addressOffset>
+          <name>EXTI_RTSR2</name>
+          <displayName>EXTI_RTSR2</displayName>
+          <description>EXTI rising trigger selection register</description>
+          <addressOffset>0x020</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>RT34</name>
-              <description>Rising trigger event configuration bit               of Configurable Event input</description>
+              <description>rising trigger event configuration bit of configurable event input 34</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>RT40</name>
-              <description>Rising trigger event configuration bit               of Configurable Event input</description>
+              <description>rising trigger event configuration bit of configurable event input 40</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>RT41</name>
-              <description>Rising trigger event configuration bit               of Configurable Event input</description>
+              <description>rising trigger event configuration bit of configurable event input 41</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>RT45</name>
-              <description>Rising trigger event configuration bit               of Configurable Event input</description>
+              <description>rising trigger event configuration bit of configurable event input 45
+Note: The configurable event inputs are edge triggered. No glitch must be generated on these inputs. If a rising edge on the configurable event input occurs while writing to the register, the associated pending bit is not set.
+Note: Rising and falling edge triggers can be set for the same configurable event input. In this case, both edges generate a trigger.</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Rising trigger disabled (for event and interrupt) for input line</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Rising trigger enabled (for event and interrupt) for input line</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>FTSR2</name>
-          <displayName>FTSR2</displayName>
-          <description>falling trigger selection           register</description>
-          <addressOffset>0x24</addressOffset>
+          <name>EXTI_FTSR2</name>
+          <displayName>EXTI_FTSR2</displayName>
+          <description>EXTI falling trigger selection register</description>
+          <addressOffset>0x024</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>FT34</name>
-              <description>Falling trigger event configuration bit               of Configurable Event input</description>
+              <description>falling trigger event configuration bit of configurable event input 34</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>FT40</name>
-              <description>Falling trigger event configuration bit               of Configurable Event input</description>
+              <description>falling trigger event configuration bit of configurable event input 40</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>FT41</name>
-              <description>Falling trigger event configuration bit               of Configurable Event input</description>
+              <description>falling trigger event configuration bit of configurable event input 41</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>FT45</name>
-              <description>Falling trigger event configuration bit               of Configurable Event input</description>
+              <description>falling trigger event configuration bit of configurable event input 45
+Note: The configurable event inputs are edge triggered. No glitch must be generated on these inputs. If a falling edge on the configurable event input occurs while writing to the register, the associated pending bit is not set.
+Note: Rising and falling edge triggers can be set for the same configurable event input. In this case, both edges generate a trigger.</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Falling trigger disabled (for event and interrupt) for input line</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Falling trigger enabled (for event and interrupt) for input line</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>SWIER2</name>
-          <displayName>SWIER2</displayName>
-          <description>software interrupt event           register</description>
-          <addressOffset>0x28</addressOffset>
+          <name>EXTI_SWIER2</name>
+          <displayName>EXTI_SWIER2</displayName>
+          <description>EXTI software interrupt event register</description>
+          <addressOffset>0x028</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>SWI34</name>
-              <description>Software interrupt on               event</description>
+              <description>software interrupt on event 34</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>SWI40</name>
-              <description>Software interrupt on               event</description>
+              <description>software interrupt on event 40</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>SWI41</name>
-              <description>Software interrupt on               event</description>
+              <description>software interrupt on event 41</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>SWI45</name>
-              <description>Software interrupt on event               45</description>
+              <description>software interrupt on event 45
+A software interrupt is generated independently from the setting in EXTI_RTSR and EXTI_FTSR. This bit always returns 0 when read.
+This bit is automatically cleared by hardware.</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Writing 0 has no effect.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Writing 1 to this bit triggers an event on line 45.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>PR2</name>
-          <displayName>PR2</displayName>
-          <description>pending register</description>
-          <addressOffset>0x2C</addressOffset>
+          <name>EXTI_PR2</name>
+          <displayName>EXTI_PR2</displayName>
+          <description>EXTI pending register</description>
+          <addressOffset>0x02C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>PIF34</name>
-              <description>Configurable event inputs 33 Pending               bit.</description>
+              <description>pending bit on event input 34</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>PIF40</name>
-              <description>Configurable event inputs 40_41 Pending               bit.</description>
+              <description>pending bit on event input 40</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>PIF41</name>
-              <description>Configurable event inputs 40_41 Pending               bit.</description>
+              <description>pending bit on event input 41</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>PIF45</name>
-              <description>Configurable event inputs 45 Pending               bit.</description>
+              <description>pending bit on event input 45
+These bits are set when the selected edge event or an EXTI_SWIER software trigger arrives on the configurable event line. This bit is cleared by writing 1 to it.</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>No trigger request occurred.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Trigger request occurred.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>C1IMR1</name>
-          <displayName>C1IMR1</displayName>
-          <description>interrupt mask           register</description>
-          <addressOffset>0x80</addressOffset>
+          <name>EXTI_C1IMR1</name>
+          <displayName>EXTI_C1IMR1</displayName>
+          <description>EXTI interrupt mask register</description>
+          <addressOffset>0x080</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>IM</name>
-              <description>wakeup with interrupt Mask on               event input</description>
+              <description>Wake-up with interrupt mask on event input x
+For each bit of this field:</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Wake-up with interrupt request from line x is masked.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Wake-up with Interrupt request from line x is unmasked.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>C1EMR1</name>
-          <displayName>C1EMR1</displayName>
-          <description>event mask           register</description>
-          <addressOffset>0x84</addressOffset>
+          <name>EXTI_C1EMR1</name>
+          <displayName>EXTI_C1EMR1</displayName>
+          <description>EXTI event mask register</description>
+          <addressOffset>0x084</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>EM0</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 0</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM1</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 1</description>
               <bitOffset>1</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM2</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 2</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM3</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 3</description>
               <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM4</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 4</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM5</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 5</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM6</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 6</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM7</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 7</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM8</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 8</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM9</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 19</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM10</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 10</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM11</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 11</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM12</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 12</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM13</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 13</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM14</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 14</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM15</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 15</description>
               <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM17</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 17</description>
               <bitOffset>17</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM18</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 18</description>
               <bitOffset>18</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM19</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 19</description>
               <bitOffset>19</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM20</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 20</description>
               <bitOffset>20</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM21</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 21</description>
               <bitOffset>21</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM22</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 22</description>
               <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Event request from line 22 is masked.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Event request from line 22 is unmasked.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>C1IMR2</name>
-          <displayName>C1IMR2</displayName>
-          <description>wakeup with interrupt mask           register</description>
-          <addressOffset>0x90</addressOffset>
+          <name>EXTI_C1IMR2</name>
+          <displayName>EXTI_C1IMR2</displayName>
+          <description>EXTI interrupt mask register</description>
+          <addressOffset>0x090</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>IM34</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 34</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM36</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 36</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM37</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 37</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM38</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 38</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM39</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 39</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM40</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 40</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM41</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 41</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM42</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 42</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM43</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 43</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM44</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 44</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM45</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 45</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM46</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 46</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Wake-up with interrupt request from line 46 is masked.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Wake-up with interrupt request from line 46 is unmasked.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>C1EMR2</name>
-          <displayName>C1EMR2</displayName>
-          <description>wakeup with event mask           register</description>
-          <addressOffset>0x94</addressOffset>
+          <name>EXTI_C1EMR2</name>
+          <displayName>EXTI_C1EMR2</displayName>
+          <description>EXTI event mask register</description>
+          <addressOffset>0x094</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>EM40</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 40</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM41</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 41</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Event request from line 41 is masked.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Event request from line 41 is unmasked.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>C2IMR1</name>
-          <displayName>C2IMR1</displayName>
-          <description>interrupt mask           register</description>
-          <addressOffset>0xC0</addressOffset>
+          <name>EXTI_C2IMR1</name>
+          <displayName>EXTI_C2IMR1</displayName>
+          <description>EXTI interrupt mask register</description>
+          <addressOffset>0x0C0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>IM</name>
-              <description>wakeup with interrupt Mask on               Event input</description>
+              <description>Wake-up with interrupt mask on event input x
+For each bit of this field:</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Wake-up with interrupt request from line x is masked.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Wake-up with Interrupt request from line x is unmasked.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>C2EMR1</name>
-          <displayName>C2EMR1</displayName>
-          <description>event mask           register</description>
-          <addressOffset>0xC4</addressOffset>
+          <name>EXTI_C2EMR1</name>
+          <displayName>EXTI_C2EMR1</displayName>
+          <description>EXTI event mask register</description>
+          <addressOffset>0x0C4</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>EM0</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 0</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM1</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 1</description>
               <bitOffset>1</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM2</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 2</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM3</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 3</description>
               <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM4</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 4</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM5</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 5</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM6</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 6</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM7</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 7</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM8</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 8</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM9</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 19</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM10</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 10</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM11</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 11</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM12</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 12</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM13</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 13</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM14</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 14</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM15</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 15</description>
               <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM17</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 17</description>
               <bitOffset>17</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM18</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 18</description>
               <bitOffset>18</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM19</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 19</description>
               <bitOffset>19</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM20</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 20</description>
               <bitOffset>20</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM21</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 21</description>
               <bitOffset>21</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM22</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 22</description>
               <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Event request from line 22 is masked.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Event request from line 22 is unmasked.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>C2IMR2</name>
-          <displayName>C2IMR2</displayName>
-          <description>wakeup with interrupt mask           register</description>
-          <addressOffset>0xD0</addressOffset>
+          <name>EXTI_C2IMR2</name>
+          <displayName>EXTI_C2IMR2</displayName>
+          <description>EXTI interrupt mask register</description>
+          <addressOffset>0x0D0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>IM34</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 34</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM36</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 36</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM37</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 37</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM38</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 38</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM39</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 39</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM40</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 40</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM41</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 41</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM42</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 42</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM43</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 43</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM44</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 44</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM45</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 45</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>IM46</name>
-              <description>wakeup with interrupt mask on event input</description>
+              <description>Wake-up with interrupt mask on event input 46</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Wake-up with interrupt request from line 46 is masked.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Wake-up with interrupt request from line 46 is unmasked.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
         <register>
-          <name>C2EMR2</name>
-          <displayName>C2EMR2</displayName>
-          <description>wakeup with event mask           register</description>
-          <addressOffset>0xD4</addressOffset>
+          <name>EXTI_C2EMR2</name>
+          <displayName>EXTI_C2EMR2</displayName>
+          <description>EXTI event mask register</description>
+          <addressOffset>0x0D4</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <resetMask>0xFFFFFFFF</resetMask>
           <fields>
             <field>
               <name>EM40</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 40</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
             <field>
               <name>EM41</name>
-              <description>Wakeup with event generation Mask               on Event input</description>
+              <description>Wake-up with event generation mask on event input 41</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>B_0x0</name>
+                  <description>Event request from line 41 is masked.</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>B_0x1</name>
+                  <description>Event request from line 41 is unmasked.</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
