@@ -29,9 +29,11 @@ memmove_orig:
   beq   2f              @ exit
   subs  r2, r3, r2      @ calculate first source address and store in r2
 1:                      @ now we copy from the end of source and work backwards
-  ldrb  r4, [r3, #-1]!  @ load byte from memory[r3-1] into r4. r3 is updated to r3-1
+  subs  r3, r3, #1
+  subs  r1, r1, #1
+  ldrb  r4, [r3]        @ load byte from memory[r3] into r4
+  strb  r4, [r1]        @ store r4 byte into memory[r1]
   cmp   r2, r3          @ check if we are at the first source address
-  strb  r4, [r1, #-1]!  @ store r4 byte into memory[r1-1]. r1 is updated to r1-1
   bne   1b              @ if not done, repeat
 2:
   pop   {r4}            @ restore previous value of r4
@@ -42,9 +44,11 @@ memmove_orig:
   add   r2, r2, r1      @ calculate the final source address + 1 and store in r2
   subs  r3, r0, #1      @ subtract 1 from the first destination address and store in r3
 4:
-  ldrb  r4, [r1], #1    @ load byte from memory[r1] into r4. r1 is updated to r1+1
+  ldrb  r4, [r1]        @ load byte from memory[r1] into r4
+  adds  r1, r1, #1
+  adds  r3, r3, #1
   cmp   r2, r1          @ check if we are at the final source address
-  strb  r4, [r3, #1]!   @ store r4 byte into memory[r3+1]. r3 is updated to r3+1
+  strb  r4, [r3]        @ store r4 byte into memory[r3]
   bne   4b              @ if not done, repeat
   pop   {r4}            @ restore previous value of r4
   bx    lr              @ exit function
