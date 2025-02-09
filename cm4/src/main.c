@@ -8,6 +8,7 @@
 #include "stm32wlxx_ll_gpio.h"
 #include "stm32wlxx_ll_lpuart.h"
 #include "stm32wlxx_ll_utils.h"
+#include "stm32wlxx.h"
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -123,14 +124,14 @@ TEST memmove_slide_dest(uint32_t data_len, uint32_t src_offset)
 
 // Add definitions that need to be in the test runner's main file.
 // GREATEST_MAIN_DEFS();
+extern uint32_t _vector_table_offset;
 
 int main(void)
 {
+  SCB->VTOR = (uint32_t)(&_vector_table_offset);  // set the vector table offset
+
   *cpu2InitDone = CPU2_NOT_INITIALISED;
-
-
   sysclk_init();
-  // UART_init();
   enable_cycle_count();
 
   LL_PWR_EnableBootC2();
