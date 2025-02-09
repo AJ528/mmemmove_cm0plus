@@ -20,7 +20,7 @@ OBJ_DIR = obj
 DEP_DIR = dep
 
 # name of the output image
-TARGET_NAME := mmemmove_CM4
+TARGET_NAME := mmemmove_cm4
 TARGET_ELF := $(BIN_DIR)/$(TARGET_NAME).elf
 TARGET_BIN := $(BIN_DIR)/$(TARGET_NAME).bin
 

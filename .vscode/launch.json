@@ -8,7 +8,7 @@
             // what folder to run this launch configuration in
             "cwd": "${workspaceFolder}",
             // path to the executable you want to run
-            "executable": "./CM4/bin/mmemmove_CM4.elf",
+            "executable": "./cm4/bin/mmemmove_cm4.elf",
             // "request" can be "launch" or "attach". Use "launch" to tell vscodium how to start
             // the app in debug mode before attaching to it.
             "request": "launch",
@@ -43,7 +43,7 @@
             // what folder to run this launch configuration in
             "cwd": "${workspaceFolder}",
             // path to the executable you want to run
-            "executable": "./CM4/bin/output.elf",
+            "executable": "./cm4/bin/output.elf",
             // "request" can be "launch" or "attach". Use "launch" to tell vscodium how to start
             // the app in debug mode before attaching to it.
             "request": "launch",
