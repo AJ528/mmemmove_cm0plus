@@ -20,6 +20,8 @@ MEMORY
 {
   RAM1   (xrw)   : ORIGIN = 0x20008000, LENGTH = 0x00004000
   RAM2   (xrw)   : ORIGIN = 0x2000C000, LENGTH = 0x00004000
+  /* CPU2's default SBRV tells it to boot from 0x08020000 */
+  /* If the flash origin point will be different, SBRV must be updated */
   FLASH   (rx)   : ORIGIN = 0x08020000, LENGTH = 0x00020000
 }
 
