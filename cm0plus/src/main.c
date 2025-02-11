@@ -27,7 +27,7 @@ static void sysclk_init(void);
 #define BUFFER_SIZE 0x1000
 
 extern void* memmove_orig(void *destination, const void *source, size_t num);
-// extern void* memmove_(void *destination, const void *source, size_t num);
+extern void* memmove_(void *destination, const void *source, size_t num);
 
 
 TEST memmove_test(uint32_t data_len, uint32_t src_offset, uint32_t dest_offset, bool print_performance)
@@ -56,7 +56,7 @@ TEST memmove_test(uint32_t data_len, uint32_t src_offset, uint32_t dest_offset, 
 
   // uint32_t memmove_new_LSU_start = get_LSU_count();
   // uint32_t memmove_new_start = get_cycle_count();
-  // memmove_(&(actual[dest_offset]), &(actual[src_offset]), data_len);
+  memmove_(&(actual[dest_offset]), &(actual[src_offset]), data_len);
   // uint32_t memmove_new_stop = get_cycle_count();
   //   uint32_t memmove_new_LSU_stop = get_LSU_count();
 
@@ -118,7 +118,7 @@ TEST memmove_slide_dest(uint32_t data_len, uint32_t src_offset)
 }
 
 // Add definitions that need to be in the test runner's main file.
-// GREATEST_MAIN_DEFS();
+GREATEST_MAIN_DEFS();
 extern uint32_t _vector_table_offset;
 
 int main(void)
@@ -126,6 +126,7 @@ int main(void)
   SCB->VTOR = (uint32_t)(&_vector_table_offset);  // set the vector table offset
 
   *cpu2InitDone = CPU2_INITIALISED;
+  sysclk_init();
   UART_init();
 
   println_("CPU2 LIVES!");
@@ -133,7 +134,7 @@ int main(void)
 
   // printfln_("%-6s %-10s %-10s %-8s %-6s %-8s %-6s", "d_len", "src_off", "dest_off", "o_cycle", "o_LSU", "n_cycle", "n_LSU");
 
-  // GREATEST_MAIN_BEGIN();  // command-line options, initialization.
+  GREATEST_MAIN_BEGIN();  // command-line options, initialization.
 
   // RUN_TESTp(memmove_test, 1, 0x81, 0x7E, true);
   // RUN_TESTp(memmove_test, 10, 0x81, 0x7E, true);
@@ -155,14 +156,20 @@ int main(void)
   // RUN_TESTp(memmove_slide_dest, 0x22, 0x17f);
   // RUN_TESTp(memmove_slide_dest, 0x200, 0x400);
 
-  // RUN_TEST1(memmove_iterate, 24);
+  RUN_TEST1(memmove_iterate, 15);
 
-  // GREATEST_MAIN_END();    // display results
+  GREATEST_MAIN_END();    // display results
 
   while (1)
   {
   	LL_mDelay(1000);
   }
+}
+
+static void ipcc_init(void)
+{
+  LL_C2_AHB3_GRP1_EnableClock(LL_C2_AHB3_GRP1_PERIPH_IPCC);
+
 }
 
 
@@ -179,37 +186,6 @@ int32_t putchar_(char c)
 
 static void sysclk_init(void)
 {
-  //set up to run off the 48MHz MSI clock
-  LL_FLASH_SetLatency(LL_FLASH_LATENCY_2);
-  while(LL_FLASH_GetLatency() != LL_FLASH_LATENCY_2)
-  {
-  }
-
-  // Configure the main internal regulator output voltage
-  // set voltage scale to range 1, the high performance mode
-  // this sets the internal main regulator to 1.2V and SYSCLK can be up to 64MHz
-  LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE1);
-  while(LL_PWR_IsActiveFlag_VOS() == 1); // delay until VOS flag is 0
-
-  // enable a wider range of MSI clock frequencies
-  LL_RCC_MSI_EnableRangeSelection();
-
-  /* Insure MSIRDY bit is set before writing MSIRANGE value */
-  while (LL_RCC_MSI_IsReady() == 0U)
-  {}
-
-  /* Set MSIRANGE default value */
-  LL_RCC_MSI_SetRange(LL_RCC_MSIRANGE_11);
-
-
-  // delay until MSI is ready
-  while (LL_RCC_MSI_IsReady() == 0U)
-  {}
-
-  // delay until MSI is system clock
-  while (LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_MSI)
-  {}
-
   // update the global variable SystemCoreClock
   SystemCoreClockUpdate();
 
@@ -222,13 +198,13 @@ static void sysclk_init(void)
 static void UART_init(void)
 {
   // enable the UART GPIO port clock
-  LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA);
+  LL_C2_AHB2_GRP1_EnableClock(LL_C2_AHB2_GRP1_PERIPH_GPIOA);
 
   // set the LPUART clock source to the peripheral clock
   LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_PCLK1);
 
   // enable clock for LPUART
-  LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_LPUART1);
+  LL_C2_APB1_GRP2_EnableClock(LL_C2_APB1_GRP2_PERIPH_LPUART1);
 
   // configure GPIO pins for LPUART1 communication
   // TX Pin is PA2, RX Pin is PA3
