@@ -91,8 +91,8 @@ COMMON_FLAGS += -mthumb
 COMMON_FLAGS += $(FLOAT_FLAGS)
 # define flags
 COMMON_FLAGS += $(DEFINE_FLAGS)
-# use nano lib
-COMMON_FLAGS += --specs=nano.specs
+# use no library
+COMMON_FLAGS += --specs=nosys.specs
 
 # use no builtin functions 
 # this prevent gcc from optimizing printf() if you decide to roll your own
