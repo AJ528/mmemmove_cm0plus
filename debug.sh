@@ -13,5 +13,9 @@ gdb-multiarch -ex "set confirm off" \
     -ex "file cm4/bin/mmemmove_cm4.elf" -ex "load" \
     -ex "add-symbol-file cm0plus/bin/mmemmove_cm0plus.elf"
 
+# gdb-multiarch -ex "set confirm off" \
+#     -ex "target extended-remote /dev/ttyACM0" -ex "monitor swd_scan" -ex "attach 2" \
+#     -ex "file cm0plus/bin/mmemmove_cm0plus.elf"
+
 
 echo "DONE"
