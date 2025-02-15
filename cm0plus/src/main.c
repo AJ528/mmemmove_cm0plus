@@ -7,6 +7,7 @@
 #include "stm32wlxx_ll_pwr.h"
 #include "stm32wlxx_ll_gpio.h"
 #include "stm32wlxx_ll_lpuart.h"
+#include "stm32wlxx_ll_ipcc.h"
 #include "stm32wlxx_ll_utils.h"
 #include "stm32wlxx.h"
 
@@ -20,8 +21,13 @@
 #define CPU2_NOT_INITIALISED 0xBE
 volatile uint8_t *cpu2InitDone = (uint8_t *)0x2000FFFF;
 
+volatile uint32_t *cycle_count = (uint32_t *)0x2000FFF0;
+
 static void UART_init(void);
 static void sysclk_init(void);
+static void init_IPCC(void);
+
+inline static uint32_t get_cycle_count(void);
 
 
 #define BUFFER_SIZE 0x1000
@@ -118,7 +124,7 @@ TEST memmove_slide_dest(uint32_t data_len, uint32_t src_offset)
 }
 
 // Add definitions that need to be in the test runner's main file.
-GREATEST_MAIN_DEFS();
+// GREATEST_MAIN_DEFS();
 extern uint32_t _vector_table_offset;
 
 int main(void)
@@ -131,10 +137,19 @@ int main(void)
 
   println_("CPU2 LIVES!");
 
+  uint32_t curr_cycle = get_cycle_count();
+
+  printfln_("current cycle count is: %#x", curr_cycle);
+
+  uint32_t new_cycle = get_cycle_count();
+
+  printfln_("new cycle count is: %#x", new_cycle);
+  printfln_("it took %#x cycles to print the first line", new_cycle-curr_cycle);
+
 
   // printfln_("%-6s %-10s %-10s %-8s %-6s %-8s %-6s", "d_len", "src_off", "dest_off", "o_cycle", "o_LSU", "n_cycle", "n_LSU");
 
-  GREATEST_MAIN_BEGIN();  // command-line options, initialization.
+  // GREATEST_MAIN_BEGIN();  // command-line options, initialization.
 
   // RUN_TESTp(memmove_test, 1, 0x81, 0x7E, true);
   // RUN_TESTp(memmove_test, 10, 0x81, 0x7E, true);
@@ -156,9 +171,9 @@ int main(void)
   // RUN_TESTp(memmove_slide_dest, 0x22, 0x17f);
   // RUN_TESTp(memmove_slide_dest, 0x200, 0x400);
 
-  RUN_TEST1(memmove_iterate, 15);
+  // RUN_TEST1(memmove_iterate, 15);
 
-  GREATEST_MAIN_END();    // display results
+  // GREATEST_MAIN_END();    // display results
 
   while (1)
   {
@@ -166,10 +181,17 @@ int main(void)
   }
 }
 
-static void ipcc_init(void)
+static void init_IPCC(void)
 {
   LL_C2_AHB3_GRP1_EnableClock(LL_C2_AHB3_GRP1_PERIPH_IPCC);
+}
 
+inline static uint32_t get_cycle_count(void)
+{
+  LL_C2_IPCC_SetFlag_CHx(IPCC, LL_IPCC_CHANNEL_1);
+  while(LL_C2_IPCC_IsActiveFlag_CHx(IPCC, LL_IPCC_CHANNEL_1) == LL_IPCC_CHANNEL_1){}
+  uint32_t current_cycle = *cycle_count;
+  return current_cycle;
 }
 
 
