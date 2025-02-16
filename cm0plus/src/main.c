@@ -15,7 +15,6 @@
 #include <stdint.h>
 #include <string.h>
 #include <stddef.h>
-#include <stdio.h>
 
 #define CPU2_INITIALISED 0xAA
 #define CPU2_NOT_INITIALISED 0xBE
@@ -55,25 +54,25 @@ TEST memmove_test(uint32_t data_len, uint32_t src_offset, uint32_t dest_offset, 
   }
 
   // uint32_t memmove_orig_LSU_start = get_LSU_count();
-  // uint32_t memmove_orig_start = get_cycle_count();
+  uint32_t memmove_orig_start = get_cycle_count();
   memmove(&(expected[dest_offset]), &(expected[src_offset]), data_len);
-  // uint32_t memmove_orig_stop = get_cycle_count();
+  uint32_t memmove_orig_stop = get_cycle_count();
   // uint32_t memmove_orig_LSU_stop = get_LSU_count();
 
   // uint32_t memmove_new_LSU_start = get_LSU_count();
-  // uint32_t memmove_new_start = get_cycle_count();
+  uint32_t memmove_new_start = get_cycle_count();
   memmove_(&(actual[dest_offset]), &(actual[src_offset]), data_len);
-  // uint32_t memmove_new_stop = get_cycle_count();
+  uint32_t memmove_new_stop = get_cycle_count();
   //   uint32_t memmove_new_LSU_stop = get_LSU_count();
 
 
 
   // if(print_performance){
-  //   uint32_t orig_cycle = memmove_orig_stop-memmove_orig_start;
-  //   uint32_t new_cycle = memmove_new_stop-memmove_new_start;
+    uint32_t orig_cycle = memmove_orig_stop-memmove_orig_start;
+    uint32_t new_cycle = memmove_new_stop-memmove_new_start;
   //   uint8_t orig_LSU = memmove_orig_LSU_stop-memmove_orig_LSU_start;
   //   uint8_t new_LSU = memmove_new_LSU_stop-memmove_new_LSU_start;
-  //   printfln_("%-6u %-#10x %-#10x %-8u %-6u %-8u %-6u", data_len, src_offset, dest_offset, orig_cycle, orig_LSU, new_cycle, new_LSU);
+    printfln_("%-6u %-#10x %-#10x %-8u %-8u", data_len, src_offset, dest_offset, orig_cycle, new_cycle);
   // }
 
   ASSERT_MEM_EQ(expected, actual, BUFFER_SIZE);
@@ -124,7 +123,7 @@ TEST memmove_slide_dest(uint32_t data_len, uint32_t src_offset)
 }
 
 // Add definitions that need to be in the test runner's main file.
-// GREATEST_MAIN_DEFS();
+GREATEST_MAIN_DEFS();
 extern uint32_t _vector_table_offset;
 
 int main(void)
@@ -134,46 +133,48 @@ int main(void)
   *cpu2InitDone = CPU2_INITIALISED;
   sysclk_init();
   UART_init();
+  init_IPCC();
 
   println_("CPU2 LIVES!");
 
-  uint32_t curr_cycle = get_cycle_count();
+  // uint32_t curr_cycle = get_cycle_count();
 
-  printfln_("current cycle count is: %#x", curr_cycle);
+  // uint32_t new_cycle = get_cycle_count();
 
-  uint32_t new_cycle = get_cycle_count();
+  // printfln_("current cycle count is: %#x", curr_cycle);
+  // printfln_("new cycle count is: %#x", new_cycle);
+  // printfln_("it took %#x cycles to print the first line", new_cycle-curr_cycle);
 
-  printfln_("new cycle count is: %#x", new_cycle);
-  printfln_("it took %#x cycles to print the first line", new_cycle-curr_cycle);
 
 
-  // printfln_("%-6s %-10s %-10s %-8s %-6s %-8s %-6s", "d_len", "src_off", "dest_off", "o_cycle", "o_LSU", "n_cycle", "n_LSU");
 
-  // GREATEST_MAIN_BEGIN();  // command-line options, initialization.
+  printfln_("%-6s %-10s %-10s %-8s %-8s", "d_len", "src_off", "dest_off", "o_cycle", "n_cycle");
 
-  // RUN_TESTp(memmove_test, 1, 0x81, 0x7E, true);
-  // RUN_TESTp(memmove_test, 10, 0x81, 0x7E, true);
-  // RUN_TESTp(memmove_test, 20, 0x81, 0x7E, true);
-  // RUN_TESTp(memmove_test, 50, 0x81, 0x7E, true);
+  GREATEST_MAIN_BEGIN();  // command-line options, initialization.
 
-  // RUN_TESTp(memmove_test, 1, 0x81, 0x82, true);
-  // RUN_TESTp(memmove_test, 10, 0x81, 0x82, true);
-  // RUN_TESTp(memmove_test, 20, 0x81, 0x82, true);
-  // RUN_TESTp(memmove_test, 50, 0x81, 0x82, true);
+  RUN_TESTp(memmove_test, 1, 0x81, 0x7E, true);
+  RUN_TESTp(memmove_test, 10, 0x81, 0x7E, true);
+  RUN_TESTp(memmove_test, 20, 0x81, 0x7E, true);
+  RUN_TESTp(memmove_test, 50, 0x81, 0x7E, true);
 
-  // RUN_TESTp(memmove_test, 1, 0x81, 0x102, true);
-  // RUN_TESTp(memmove_test, 10, 0x81, 0x102, true);
-  // RUN_TESTp(memmove_test, 20, 0x81, 0x102, true);
-  // RUN_TESTp(memmove_test, 50, 0x81, 0x102, true);
+  RUN_TESTp(memmove_test, 1, 0x81, 0x82, true);
+  RUN_TESTp(memmove_test, 10, 0x81, 0x82, true);
+  RUN_TESTp(memmove_test, 20, 0x81, 0x82, true);
+  RUN_TESTp(memmove_test, 50, 0x81, 0x82, true);
 
-  // RUN_TESTp(memmove_slide_dest, 0x0f, 0x81);
-  // RUN_TESTp(memmove_slide_dest, 0x10, 0x80);
-  // RUN_TESTp(memmove_slide_dest, 0x22, 0x17f);
-  // RUN_TESTp(memmove_slide_dest, 0x200, 0x400);
+  RUN_TESTp(memmove_test, 1, 0x81, 0x102, true);
+  RUN_TESTp(memmove_test, 10, 0x81, 0x102, true);
+  RUN_TESTp(memmove_test, 20, 0x81, 0x102, true);
+  RUN_TESTp(memmove_test, 50, 0x81, 0x102, true);
+
+  RUN_TESTp(memmove_slide_dest, 0x0f, 0x81);
+  RUN_TESTp(memmove_slide_dest, 0x10, 0x80);
+  RUN_TESTp(memmove_slide_dest, 0x22, 0x17f);
+  RUN_TESTp(memmove_slide_dest, 0x200, 0x400);
 
   // RUN_TEST1(memmove_iterate, 15);
 
-  // GREATEST_MAIN_END();    // display results
+  GREATEST_MAIN_END();    // display results
 
   while (1)
   {
@@ -189,7 +190,7 @@ static void init_IPCC(void)
 inline static uint32_t get_cycle_count(void)
 {
   LL_C2_IPCC_SetFlag_CHx(IPCC, LL_IPCC_CHANNEL_1);
-  while(LL_C2_IPCC_IsActiveFlag_CHx(IPCC, LL_IPCC_CHANNEL_1) == LL_IPCC_CHANNEL_1){}
+  while(LL_C2_IPCC_IsActiveFlag_CHx(IPCC, LL_IPCC_CHANNEL_1)){}
   uint32_t current_cycle = *cycle_count;
   return current_cycle;
 }

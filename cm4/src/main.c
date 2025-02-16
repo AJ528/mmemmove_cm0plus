@@ -47,6 +47,7 @@ int main(void)
   *cpu2InitDone = CPU2_NOT_INITIALISED;
   sysclk_init();
   enable_cycle_count();
+  init_IPCC();
 
   LL_PWR_EnableBootC2();
 
@@ -56,7 +57,7 @@ int main(void)
   {
     // wait for IPCC trigger
     if(LL_C2_IPCC_IsActiveFlag_CHx(IPCC, LL_IPCC_CHANNEL_1) == LL_IPCC_CHANNEL_1){
-      *cycle_count = (volatile uint32_t)get_cycle_count;
+      *cycle_count = get_cycle_count();
       LL_C1_IPCC_ClearFlag_CHx(IPCC, LL_IPCC_CHANNEL_1);
       __NOP();
       __NOP();
