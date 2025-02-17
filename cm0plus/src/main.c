@@ -132,6 +132,7 @@ int main(void)
   UART_init();
   init_IPCC();
 
+  print_newline();
   println_("CPU2 LIVES!");
 
   uint32_t curr_cycle = get_cycle_count();
@@ -166,7 +167,7 @@ int main(void)
   RUN_TESTp(memmove_slide_dest, 0x22, 0x17f);
   RUN_TESTp(memmove_slide_dest, 0x200, 0x400);
 
-  // RUN_TEST1(memmove_iterate, 15);
+  RUN_TEST1(memmove_iterate, 15);
 
   GREATEST_MAIN_END();    // display results
 
