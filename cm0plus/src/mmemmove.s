@@ -6,7 +6,7 @@
   @ this directive specifies the following symbol is a thumb-encoded function
   .thumb_func
   @ align the next variable or instruction on a 2-byte boundary
-  .align 2
+  .balign 2
   @ make the symbol visible to the linker
   .global memmove_
   @ marks the symbol as being a function name
@@ -42,8 +42,7 @@ memmove_:
   bne   quad_b_copy     @ if not, copy 4 bytes at a time
 
 
-.balign 8                   @ align the loop to an 8 byte boundary, also force encodings for speed/alignment
-  nop.n                     @ offset by 2 bytes so the LDR/STR instructions align nicely
+.balign 4                   @ align the loop to a 4 byte boundary
 @ if there are 16 or more bytes to copy and the src and dest are 4-byte aligned, can copy word-wise
 quad_word_b_copy:
   subs    r3, r3, #16
@@ -66,8 +65,7 @@ quad_word_b_copy:
   b     exit                @ otherwise, exit
 
 
-.balign 8                 @ align the loop to an 8 byte boundary, also force encodings for speed/alignment
-  nop.n                   @ offset by 2 bytes so the LDR/STR instructions align nicely
+.balign 4                 @ align the loop to a 4 byte boundary
 quad_b_copy:              @ copy backwards 4 bytes at a time
   subs  r3, r3, #4
   subs  r4, r4, #4
@@ -108,20 +106,20 @@ copy_f:                 @ copy from beginning of source and work forwards
   tst   r1, r6          @ check if the source address is 4-byte aligned
   bne   quad_f_copy     @ if not, copy 4 bytes at a time
 
-.balign 8               @ align the loop to an 8 byte boundary, also force encodings for speed/alignment
+.balign 4               @ align the loop to an 4 byte boundary
 @ if there are 16 or more bytes to copy and the src and dest are 4-byte aligned, can copy word-wise
 quad_word_f_copy:
-  ldr  r5, [r1]         @ load byte from memory[r1] into r5
-  str  r5, [r4]         @ store r5 byte into memory[r4]
-  ldr  r5, [r1, #4]
-  str  r5, [r4, #4]
-  ldr  r5, [r1, #8]
-  str  r5, [r4, #8]
-  ldr  r5, [r1, #12]
-  str  r5, [r4, #12]
+  ldr   r5, [r1]         @ load byte from memory[r1] into r5
+  str   r5, [r4]         @ store r5 byte into memory[r4]
+  ldr   r5, [r1, #4]
+  str   r5, [r4, #4]
+  ldr   r5, [r1, #8]
+  str   r5, [r4, #8]
+  ldr   r5, [r1, #12]
+  str   r5, [r4, #12]
   adds  r1, #16
   adds  r4, #16
-  subs   r2, r2, #16     @ decrement remaining bytes by 16
+  subs  r2, r2, #16     @ decrement remaining bytes by 16
   cmp   r2, #16         @ check if there are 16 or more bytes to copy
   bhs   quad_word_f_copy  @ if there are 16+ bytes left, quad word copy again
   cmp   r2, #4              @ if there are 4 or more bytes to copy
@@ -130,12 +128,11 @@ quad_word_f_copy:
   bne   copy_fwd_single   @ if not, finish with single byte copying
   b     exit              @ otherwise, exit
 
-.balign 4                 @ align the loop to a 4 byte boundary, also force encodings for speed/alignment
-                          @ I'm not sure why, but quad_f_copy was the only loop that didn't benefit from 8 byte alignment
-quad_f_copy:
 
-  ldrb  r5, [r1]    @ load byte from memory[r1] into r5
-  strb  r5, [r4]    @ store r5 byte into memory[r4]
+.balign 8               @ align the loop to a 4 byte boundary
+quad_f_copy:            @ copy forwards 4 bytes at a time
+  ldrb  r5, [r1]        @ load byte from memory[r1] into r5
+  strb  r5, [r4]        @ store r5 byte into memory[r4]
   ldrb  r5, [r1, #1]
   strb  r5, [r4, #1]
   ldrb  r5, [r1, #2]
